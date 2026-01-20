@@ -1,4 +1,5 @@
 module "vpc" {
+  # VPC module to create and manage the Virtual Private Cloud and its subnets
   source          = "./modules/vpc"
   project_name    = var.project_name
   vpc_cidr        = var.vpc_cidr
@@ -7,14 +8,16 @@ module "vpc" {
 }
 
 module "iam" {
+  # IAM module to create roles and policies for EKS
   source       = "./modules/iam"
   project_name = var.project_name
 }
 
 module "eks" {
+  # EKS module to create and manage the Kubernetes cluster
   source          = "./modules/eks"
   project_name    = var.project_name
-  cluster_version = var.eks_version
+  eks_version     = var.eks_version
 
   vpc_id             = module.vpc.vpc_id
   private_subnet_ids = module.vpc.private_subnet_ids
@@ -25,6 +28,7 @@ module "eks" {
 }
 
 module "rds" {
+  # RDS module to create and manage the relational database service
   source       = "./modules/rds"
   project_name = var.project_name
 
@@ -37,12 +41,14 @@ module "rds" {
 }
 
 module "s3" {
+  # S3 module to create and manage S3 buckets
   source       = "./modules/s3"
   project_name = var.project_name
 }
 
 module "cloudwatch" {
+  # CloudWatch module to set up monitoring and logging for the EKS cluster
   source           = "./modules/cloudwatch"
   project_name     = var.project_name
-  eks_cluster_name = module.eks.cluster_name
+  cluster_name = module.eks.cluster_name
 }

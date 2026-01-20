@@ -1,4 +1,8 @@
 resource "aws_cloudwatch_log_group" "eks" {
-  name              = "/aws/eks//cluster"
+  name              = "/aws/eks/${var.cluster_name}/cluster"
   retention_in_days = 30
+
+  tags = {
+    Name = "${var.project_name}-eks-log-group"
+  }
 }

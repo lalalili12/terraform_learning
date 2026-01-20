@@ -2,6 +2,6 @@ variable "project_name" {
   type = string
 }
 
-variable "eks_cluster_name" {
+variable "cluster_name" {
   type = string
 }
