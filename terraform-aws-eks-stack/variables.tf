@@ -63,9 +63,9 @@ variable "eks_version" {
   default = "1.29"
 }
 
-variable "eks_node_group_instance_types" {
-  type = list(string)
-}
+# variable "eks_node_group_instance_types" {
+#   type = list(string)
+# }
 
 # Username for the database (sensitive).
 variable "db_username" {
