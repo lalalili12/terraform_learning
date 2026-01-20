@@ -19,7 +19,3 @@ variable "private_subnets" {
     az   = string
   }))
 }
-
-variable "cluster_name" {
-  type = string
-}
