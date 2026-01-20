@@ -37,6 +37,7 @@ resource "aws_eks_node_group" "this" {
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
   instance_types = var.instance_types 
+  ami_type       = "AL2_x86_64"
 
   scaling_config {
     desired_size = 2
