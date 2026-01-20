@@ -7,5 +7,5 @@ eks_node_group_instance_types = [ "3t.large" ]  # Define the EC2 instance type f
 
 db_username  = "appuser"
 db_password  = "SomeStrongPassword123!"
-ssh_key_name = "yuval-keypair"
+ssh_key_name = "terraform"
 
