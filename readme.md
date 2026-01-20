@@ -55,8 +55,8 @@ Before you begin, ensure you have the following installed on your system:
       2. 	Open S3
       3. 	Select Create bucket
       4. 	Configure the bucket:
-         • 	Bucket name: shay-terraform-state-bucket
-         • 	AWS Region: eu-central-1
+         - 	Bucket name: shay-terraform-state-bucket
+         - 	AWS Region: eu-central-1
       5. 	Under Bucket Versioning, choose Enable
       6. 	Under Default encryption, ensure encryption is Enabled
       7. 	Leave other settings as default
@@ -66,8 +66,8 @@ Before you begin, ensure you have the following installed on your system:
       1. 	In the AWS Console, open DynamoDB
       2. 	Select Create table
       3. 	Configure the table:
-         • 	Table name: terraform-locks
-         • 	Partition key:  LockID(String)
+         - 	Table name: terraform-locks
+         - 	Partition key:  LockID(String)
       4. 	For Table settings, choose Default settings
       5. 	Click Create table
 
