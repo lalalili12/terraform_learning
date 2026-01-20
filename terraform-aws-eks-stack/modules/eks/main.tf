@@ -31,12 +31,17 @@ resource "aws_eks_cluster" "this" {
   }
 }
 
+data "aws_ssm_parameter" "eks_ami_release_version" {
+  name = "/aws/service/eks/optimized-ami/${aws_eks_cluster.this.version}/amazon-linux-2023/x86_64/standard/recommended/release_version"
+}
+
 resource "aws_eks_node_group" "this" {
   cluster_name    = aws_eks_cluster.this.name
   node_group_name = "${var.project_name}-eks-node-group"
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.private_subnet_ids
   instance_types = var.instance_types
+  release_version = nonsensitive(data.aws_ssm_parameter.eks_ami_release_version.value)
 
   scaling_config {
     desired_size = 2
