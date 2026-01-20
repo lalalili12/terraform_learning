@@ -25,16 +25,25 @@ variable "public_subnets" {
 }
 
 # List of CIDR blocks for private subnets.
-variable "private_subnets" {
-  type    = list(string)
-  default = ["10.0.11.0/24", "10.0.12.0/24"]
-}
-
 # List of availability zones for private subnets.
-variable "private_azs" {
-  type    = list(string)
-  default = ["eu-central-1a", "eu-central-1b"]
-}
+
+variable "private_subnets" {
+  type = map(object({
+    cidr = string
+    az   = string
+  }))  
+  default = {
+    subnet1 = {
+      cidr = "10.0.11.0/24"
+      az   = "eu-central-1a"
+    }
+    subnet2 = {
+      cidr = "10.0.12.0/24"
+      az   = "eu-central-1b"
+    }
+  }
+} 
+
 
 # Kubernetes version for the EKS cluster.
 variable "eks_version" {

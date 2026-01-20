@@ -32,8 +32,8 @@ resource "aws_subnet" "private" {
   for_each = toset(var.private_subnets)
 
   vpc_id     = aws_vpc.this.id
-  cidr_block = each.value
-  availability_zone = var.private_azs[tonumber(each.key)]
+  cidr_block = each.value.cidr
+  availability_zone = each.value.az
 
   tags = {
     Name = "${var.project_name}-private-subnet-${each.key}"
