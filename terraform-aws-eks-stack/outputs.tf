@@ -17,3 +17,11 @@ output "eks_cluster_endpoint" {
 output "rds_endpoint" {
   value = module.rds.db_endpoint
 }
+
+output "eks_ami_release_version" {
+  value = module.eks.aws_eks_node_group.release_version
+}
+
+output "instance_types" {
+  value = module.eks.aws.instance_types
+}
