@@ -20,8 +20,20 @@ variable "vpc_cidr" {
 
 # List of CIDR blocks for public subnets.
 variable "public_subnets" {
-  type    = list(string)
-  default = ["10.0.1.0/24", "10.0.2.0/24"]
+   type = map(object({
+    cidr = string
+    az   = string
+  }))
+  default = {
+    public1 = {
+      cidr = "10.0.1.0/24"
+      az   = "eu-central-1a"
+    }
+    public2 = {
+      cidr = "10.0.2.0/24"
+      az   = "eu-central-1b"
+    }
+  }
 }
 
 # List of CIDR blocks for private subnets.
@@ -36,7 +48,7 @@ variable "private_subnets" {
     subnet1 = {
       cidr = "10.0.11.0/24"
       az   = "eu-central-1a"
-    }
+    } 
     subnet2 = {
       cidr = "10.0.12.0/24"
       az   = "eu-central-1b"
