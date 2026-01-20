@@ -19,9 +19,9 @@ output "rds_endpoint" {
 }
 
 output "eks_ami_release_version" {
-  value = module.eks.aws_eks_node_group.release_version
+  value = module.eks.release_version
 }
 
 output "instance_types" {
-  value = module.eks.aws_eks_node_group.instance_types
+  value = module.eks.instance_types
 }
