@@ -46,30 +46,30 @@ Before you begin, ensure you have the following installed on your system:
    Start-Process msiexec.exe -Wait -ArgumentList "/I awscliv2.msi /quiet"
    ```
 4. **Terraform Backend**:
-   🗄️ Backend Prerequisites (S3 + DynamoDB via AWS Console)
-   This project uses an S3 bucket to store the Terraform state file and a DynamoDB table for state locking.
-   These resources must be created manually in the AWS Console before running .
+   - 🗄️ Backend Prerequisites (S3 + DynamoDB via AWS Console)
+      This project uses an S3 bucket to store the Terraform state file and a DynamoDB table for state locking.
+      These resources must be created manually in the AWS Console before running .
 
-   📦 1. Create the S3 Bucket (Terraform State)
-   1. 	Sign in to the AWS Console
-   2. 	Open S3
-   3. 	Select Create bucket
-   4. 	Configure the bucket:
-   • 	Bucket name: 
-   • 	AWS Region: 
-   5. 	Under Bucket Versioning, choose Enable
-   6. 	Under Default encryption, ensure encryption is Enabled
-   7. 	Leave other settings as default
-   8. 	Click Create bucket
+   - 📦 1. Create the S3 Bucket (Terraform State)
+      1. 	Sign in to the AWS Console
+      2. 	Open S3
+      3. 	Select Create bucket
+      4. 	Configure the bucket:
+      • 	Bucket name: shay-terraform-state-bucket
+      • 	AWS Region: eu-central-1
+      5. 	Under Bucket Versioning, choose Enable
+      6. 	Under Default encryption, ensure encryption is Enabled
+      7. 	Leave other settings as default
+      8. 	Click Create bucket
 
-   🔒 2. Create the DynamoDB Table (State Locking)
-   1. 	In the AWS Console, open DynamoDB
-   2. 	Select Create table
-   3. 	Configure the table:
-   • 	Table name: 
-   • 	Partition key:  (String)
-   4. 	For Table settings, choose Default settings
-   5. 	Click Create table
+   - 🔒 2. Create the DynamoDB Table (State Locking)
+      1. 	In the AWS Console, open DynamoDB
+      2. 	Select Create table
+      3. 	Configure the table:
+      • 	Table name: terraform-locks
+      • 	Partition key:  LockID(String)
+      4. 	For Table settings, choose Default settings
+      5. 	Click Create table
 
 ## Getting Started
 
