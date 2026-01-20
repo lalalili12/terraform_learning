@@ -30,6 +30,12 @@ variable "private_subnets" {
   default = ["10.0.11.0/24", "10.0.12.0/24"]
 }
 
+# List of availability zones for private subnets.
+variable "private_azs" {
+  type    = list(string)
+  default = ["eu-central-1a", "eu-central-1b"]
+}
+
 # Kubernetes version for the EKS cluster.
 variable "eks_version" {
   type    = string

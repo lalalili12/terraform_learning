@@ -24,7 +24,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${var.project_name}-public-subnet"
+    Name = "${var.project_name}-public-subnet-${each.key}"
   }
 }
 
@@ -33,8 +33,9 @@ resource "aws_subnet" "private" {
 
   vpc_id     = aws_vpc.this.id
   cidr_block = each.value
+  availability_zone = var.private_azs[tonumber(each.key)]
 
   tags = {
-    Name = "${var.project_name}-private-subnet"
+    Name = "${var.project_name}-private-subnet-${each.key}"
   }
 }
