@@ -23,5 +23,5 @@ output "eks_ami_release_version" {
 }
 
 output "instance_types" {
-  value = module.eks.aws.instance_types
+  value = module.eks.aws_eks_node_group.instance_types
 }
